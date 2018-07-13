@@ -48,7 +48,7 @@ public class SaleOrderDetailActivity extends BaseActivity implements IMvpView {
     private String mDeliveryId, mType;
     private LinearLayout mExaminaLayout;
     private TextView mRejectText, mApproveText;
-
+    private String mCurrentApprovalId = "";
     @Override
     protected int getLayoutId() {
         return R.layout.sale_order_detail_layout;
@@ -234,6 +234,7 @@ public class SaleOrderDetailActivity extends BaseActivity implements IMvpView {
                     }
                 }
                 mSumPriceText.setText(mSumPrice + "");
+                mCurrentApprovalId = mDataMap.get("currentApprovalId") + "";
                 if (mApprovalsList != null && mApprovalsList.size() > 0) {
                     mAdapter = new RecyAdapter();
                     mRecyclerView.setAdapter(mAdapter);
@@ -309,7 +310,7 @@ public class SaleOrderDetailActivity extends BaseActivity implements IMvpView {
         @Override
         public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             MyViewHolder holder = new MyViewHolder(LayoutInflater.from(
-                    SaleOrderDetailActivity.this).inflate(R.layout.auditor_item_2, parent,
+                    SaleOrderDetailActivity.this).inflate(R.layout.auditor_item_3, parent,
                     false));
             return holder;
         }
@@ -319,6 +320,11 @@ public class SaleOrderDetailActivity extends BaseActivity implements IMvpView {
             if (mApprovalsList.get(position).get("approvalUserName") != null) {
                 holder.name.setText(mApprovalsList.get(position).get("approvalUserName") + "");
             }
+            if(mApprovalsList.get(position).get("approvalId").equals(mCurrentApprovalId)){
+                holder.status.setVisibility(View.VISIBLE);
+            }else{
+                holder.status.setVisibility(View.GONE);
+            }
         }
 
         @Override
@@ -327,11 +333,12 @@ public class SaleOrderDetailActivity extends BaseActivity implements IMvpView {
         }
 
         class MyViewHolder extends RecyclerView.ViewHolder {
-            TextView name;
+            TextView name,status;
 
             public MyViewHolder(View view) {
                 super(view);
                 name = view.findViewById(R.id.auditors_text);
+                status = view.findViewById(R.id.audition_status);
             }
         }
     }

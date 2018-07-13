@@ -34,6 +34,7 @@ import com.umeng.analytics.MobclickAgent;
 
 import org.json.JSONArray;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -473,7 +474,7 @@ public class SaleOrderApplyActivity extends BaseActivity implements IMvpView, Vi
                 mNumbers.clearTextChangedListeners();
                 mOnePrice.clearTextChangedListeners();
                 if (s == null || s.toString().equals("")) {
-                    mSumEdit.setText("0");
+//                    mSumEdit.setHint("0");
                 }
                 mHandler.sendEmptyMessageDelayed(0,0);
             }
@@ -498,9 +499,15 @@ public class SaleOrderApplyActivity extends BaseActivity implements IMvpView, Vi
                 } else {
                     m = Float.parseFloat(value);
                 }
-                float numbers = Float.parseFloat(mNumbers.getText().toString());
-                float sum = m * numbers;
-                mSumEdit.setText(sum + "");
+                float numbers;
+                if(mNumbers.getText().toString().equals("")){
+                    numbers = 0;
+                }else{
+                    numbers = Float.parseFloat(mNumbers.getText().toString());
+                }
+                double sum = m * numbers;
+                BigDecimal bd1 = new BigDecimal(sum);
+                mSumEdit.setText(bd1.toPlainString() + "");
                 mHandler.sendEmptyMessageDelayed(0, 0);
             }
 
@@ -525,9 +532,16 @@ public class SaleOrderApplyActivity extends BaseActivity implements IMvpView, Vi
                 } else {
                     m = Float.parseFloat(s.toString());
                 }
-                float onePrice = Float.parseFloat(mOnePrice.getText().toString());
-                float sum = onePrice * m;
-                mSumEdit.setText(sum+"");
+                float onePrice;
+                if(mOnePrice.getText().toString().equals("")){
+                    onePrice = 0;
+                }else{
+                    onePrice = Float.parseFloat(mOnePrice.getText().toString());
+                }
+                double sum = onePrice * m;
+                BigDecimal bd1 = new BigDecimal(sum);
+                mSumEdit.setText(bd1.toPlainString() + "");
+//                mSumEdit.setText(sum+"");
                 mHandler.sendEmptyMessageDelayed(0, 0);
             }
 
@@ -937,11 +951,17 @@ public class SaleOrderApplyActivity extends BaseActivity implements IMvpView, Vi
                     for (int i = 0; i < mDetailGoodsLayout.getChildCount(); i++) {
                         View view = mDetailGoodsLayout.getChildAt(i);
                         MyEditText mSumText = view.findViewById(R.id.price_sum_edit);
-//                        String mm = mSumText.getText().toString();
-
-                        totalPrice = totalPrice + Float.parseFloat(mSumText.getText().toString().replaceAll("元", ""));
+                        float sum;
+                        if(mSumText.getText().toString().equals("")){
+                            sum = 0;
+                        }else{
+                            sum = Float.parseFloat(mSumText.getText().toString().replaceAll("元", ""));
+                        }
+                        totalPrice = totalPrice + sum;
                     }
-                    mSumPriceText.setText(totalPrice + "");
+                    BigDecimal bd1 = new BigDecimal(totalPrice);
+                    mSumPriceText.setText(bd1.toPlainString() + "");
+//                    mSumPriceText.setText(totalPrice + "");
                     break;
                 case MSG_LOAD_DATA:
                     if (thread == null) {//如果已创建就不再重新创建子线程了

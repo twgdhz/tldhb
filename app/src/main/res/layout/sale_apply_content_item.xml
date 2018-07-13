@@ -138,9 +138,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="0"
+                android:text=""
                 android:background="@null"
                 android:singleLine="true"
+                android:paddingRight="20dp"
                 android:inputType="numberDecimal"
                 android:textColor="@color/back"
                 android:textSize="15sp" />
@@ -181,9 +182,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="0"
+                android:text=""
                 android:background="@null"
                 android:singleLine="true"
+                android:paddingRight="20dp"
                 android:inputType="number"
                 android:textColor="@color/back"
                 android:textSize="15sp" />
@@ -215,9 +217,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="right"
-                android:text="0"
+                android:text=""
                 android:background="@null"
                 android:textColor="@color/back"
+                android:paddingRight="20dp"
                 android:inputType="numberDecimal"
                 android:textSize="15sp" />
             <TextView

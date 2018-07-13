@@ -27,8 +27,8 @@ public class Constants {
     public static String key = "g91qycacimz75ony7atdqria2ck4w7i55c5x";
     public static String token = "",provinceId="",provinceName="",cityId="",cityName="",countyName="",countyId="",address="";
 
-//    public static final String apiHead = "http://api.fat.tianlu56.com.cn/"; //研发环境
-    public static final String apiHead = "http://wmsapi.tianlu56.com.cn/";//生产环境
+    public static final String apiHead = "http://api.fat.tianlu56.com.cn/"; //研发环境
+//    public static final String apiHead = "http://wmsapi.tianlu56.com.cn/";//生产环境
 
     //经销商登录
     public static final String login = "usc/user/distributorLogin";

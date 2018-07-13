@@ -36,6 +36,11 @@ public class UserPresenter extends BasePresenter implements UserInterface {
             public void onError(Throwable e) {
                 Log.i("tl.com.tlsl返回数据",e+"=====onError=======");
                 mImvpView.hideLoading();
+                if(e.toString().indexOf("Timeout")!= -1){
+                    mImvpView.onFail("连接超时，请重试。");
+                }else{
+                    mImvpView.onFail(e+"");
+                }
             }
             @Override
             public void onNext(String s) {

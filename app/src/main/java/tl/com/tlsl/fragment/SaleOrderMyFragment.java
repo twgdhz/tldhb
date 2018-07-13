@@ -28,10 +28,6 @@ import java.util.Date;
 import tl.com.tlsl.R;
 import tl.com.tlsl.activity.SaleOrderApplyActivity;
 import tl.com.tlsl.activity.SaleOrderDetailActivity;
-import tl.com.tlsl.adapter.SaleOrderAdapter;
-import tl.com.tlsl.broadcastReceiver.OrderStatusBroadcastReceiver;
-import tl.com.tlsl.model.impl.SwipeImpl;
-import tl.com.tlsl.model.impl.SwipeInterface;
 import tl.com.tlsl.presenter.SaleOrderPresenter;
 import tl.com.tlsl.utils.DensityUtils;
 import tl.com.tlsl.utils.RecyclerUtil;
@@ -40,7 +36,6 @@ import tl.com.tlsl.view.IMvpView;
 import tl.com.tlsl.weiget.AlertDialog;
 import tl.com.tlsl.weiget.LoadingDialog;
 import tl.com.tlsl.weiget.SlidingButtonView;
-import tl.com.tlsl.weiget.SwipeListLayout;
 
 /**
  * Created by admin on 2018/5/16.
